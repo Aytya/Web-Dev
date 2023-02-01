@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>Challenge: Position planet</title>
+  <title>Spin-off of "Challenge: Position planet"</title>
   <style>
     #greeting {
+      position:absolute;
       background: rgb(255, 255, 0);
+      top:130px;
       border: 2px solid black;
       font-family: "Comic Sans MS", fantasy;
-      padding: 5px;
-      width: 262px;
-      position: absolute;
-      top: 50px;
-      left: 100px;
+      padding:2px;
+      width:262px;
+      left:80px;
+      text-align:center;
       z-index:1;
     }
 
     #creature {
-      position: absolute;
-      top: 50px;
-      left: 50px;
-      z-index:0;
+      position:absolute;
+      top:100px;
+      left:70px;
+      z-index:1;
     }
   </style>
 </head>
 <body>
 
-<img id="planet" src="https://www.kasandbox.org/programming-images/space/planet.png" width="300">
+<img id="planet" src="https://www.kasandbox.org/programming-images/space/planet.png" width = "350" >
+
+<img id="creature" src="https://www.kasandbox.org/programming-images/avatars/mr-pink.png" width = "100">
 
 <div id="greeting">
   <p>Hello! Welcome to position planet!</p>
 </div>
-
-<img id="creature" src="https://www.kasandbox.org/programming-images/avatars/mr-pink.png">
-
 
 </body>
 </html>
