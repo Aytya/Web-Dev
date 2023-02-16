@@ -1,0 +1,213 @@
+<!Doctype html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To do list</title>
+</head>
+<body>
+<style>
+    body{
+        background-color: white;
+        font-family: monospace;
+        min-width:250px ;
+        cursor: pointer;
+    }
+    ul{
+        list-style: none;
+        margin-left: 200px;
+    }
+    ul li{
+        margin-left: 100px;
+        width: 900px;
+        height:20px;
+        padding: 18px;
+        border-color: black;
+        margin-bottom: 10px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    }
+    ul li.checked {
+        background: #888;
+        color: #fff;
+        text-decoration: line-through;
+    }
+    ul li.checked::before {
+        border-color: #fff;
+        border-style: solid;
+        transform: rotate(45deg);
+        height: 15px;
+        width: 10px;
+    }
+    h1{
+        margin-left:300px;
+        margin-top: 125px;
+        padding: 10px;
+        font-weight: normal;
+    }
+    .close {
+        text-decoration: none;
+        list-style: none;
+        float: right;
+        color: darkred;
+    }
+    .container input{
+        margin-bottom: 20px;
+        margin-left:400px;
+        width: 800px;
+        border-radius: 8px;
+        border: 0;
+        padding: 18px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    }
+    .push {
+        padding: 15px;
+        color: white;
+        background-color: #297dc7;
+        border: #297dc7;
+        margin-left: 20px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+</style>
+
+<div class = "container" id="to">
+    <h1>ToDo List</h1>
+    <input type = "text" id="do" placeholder = "New Task">
+    <span class = "push" onclick="newElement()">Add</span>
+</div>
+    <ul id="list">
+        <li >First Item</li>
+        <li class ="checked">Second Item</li>
+        <li>Third Item</li>
+    </ul>
+
+<script>
+    // Create a "close" button and append it to each list item
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
+    }
+
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            if (this.querySelector(".counter") == null) {
+                div.style.display = "none";
+            } else {
+                var count = parseInt(this.querySelector(".counter").textContent);
+
+                if (count <= 1) {
+                    div.style.display = "none";
+                    count--;
+                    this.querySelector(".counter").textContent = count;
+                } else {
+                    count--;
+                    this.querySelector(".counter").textContent = count;
+                }
+
+            }
+        }
+    }
+
+    // Add a "checked" symbol when clicking on a list item
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+
+    // Create a new list item when clicking on the "Add" button
+    function newElement() {
+
+
+        var isExisting = false;
+        var existingArray = [];
+        var inputValue = document.getElementById("do").value;
+        var list = document.querySelectorAll("#list li");
+
+        [].forEach.call(list, function(el) {
+            [].forEach.call(el.childNodes, function(elem) {
+                if (elem.nodeType == 3) {
+                    if (elem.nodeValue == inputValue) {
+                        isExisting = true;
+                        var span = elem.nextElementSibling;
+                        if (span.querySelector(".counter") == null) {
+                            var countSpan = document.createElement("span");
+                            var counter = 2;
+                            if (elem.parentElement.style.display == "none") {
+                                counter = 1;
+                                elem.parentElement.style.display = "list-item";
+                            }
+
+
+                            var count = document.createTextNode(counter);
+                            countSpan.className = "counter";
+                            countSpan.appendChild(count);
+                            span.appendChild(countSpan);
+
+                        } else {
+
+                            elem.parentElement.style.display = "list-item";
+                            var count = parseInt(span.querySelector(".counter").textContent);
+                            count++;
+                            span.querySelector(".counter").textContent = count;
+                        }
+
+
+                    }
+
+                }
+            });
+        });
+
+
+        if (isExisting === false) {
+            var li = document.createElement("li");
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("list").appendChild(li);
+            }
+            document.getElementById("do").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+
+                    var div = this.parentElement;
+                    if (this.querySelector(".counter") == null) {
+                        div.style.display = "none";
+                    } else {
+                        var count = parseInt(this.querySelector(".counter").textContent);
+
+                        if (count <= 1) {
+                            div.style.display = "none";
+                            count--;
+                            this.querySelector(".counter").textContent = count;
+                        } else {
+                            count--;
+                            this.querySelector(".counter").textContent = count;
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function truncate(str, maxlength){
+    return (str.length > maxlength) ?
+            str.slice(0, maxlength - 1) + '...' : str;
+  }
+
+  truncate("What I'd like to tell on this topic is:", 20);
+  truncate("Hi everyone!", 20);
+</script>
+</body>
+</html>

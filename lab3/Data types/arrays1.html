@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let styles = ["Jazz", "Blues"];
+  alert(styles);
+
+  let collection = styles;
+  collection.push("Rock-n-Roll");
+  alert(collection);
+
+  collection[Math.floor((styles.length - 1) / 2)] = "Classics";
+  alert(collection);
+
+  alert(collection.shift() );
+  alert(collection);
+
+  collection.unshift("Rap", "Reggae");
+  alert(collection);
+</script>
+</body>
+</html>
