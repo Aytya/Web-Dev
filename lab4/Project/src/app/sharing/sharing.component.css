@@ -1,0 +1,24 @@
+.product-container{
+  display: flex;
+  left:10%;
+  right:10%;
+  margin-top: 50px;
+}
+.button{
+  margin-top: 30px;
+  display: block;
+  margin-right: 15px;
+  height: 30px;
+  background-color: #00A5D2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.button:hover{
+  cursor: pointer;
+  background-color: #166fe3;
+}
+.button:focus{
+  background-color: #0067b8;
+}
+

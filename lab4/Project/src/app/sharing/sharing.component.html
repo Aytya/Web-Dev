@@ -1,0 +1,19 @@
+<div *ngIf="product" class = "product-container">
+
+  <div class = "row" *ngIf="product">
+    <img class = "product-image" [src] = "product.image" width = "200px">
+  </div>
+  <div class = "row" *ngIf="product">
+    <h4 class = "product-name">
+        {{product.name}}
+    </h4>
+    <p> Price: <span class = "product-price">{{product.price | currency: '₸'}}</span> Rating:<span class = "rating">{{product.rating}}</span></p>
+    <ul>
+      <li *ngFor="let descr of product.description" class = product-desciption>{{descr.subdescr}}</li>
+    </ul>
+  </div>
+  <div class="share-button">
+    <button (click)="shareOnWhatsapp(product)" class = "button">Share on Whatsapp</button>
+    <button (click)="shareOnTelegram(product)" class = "button">Share on Telegram</button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h3 class = "product-list">List of products available</h3>
+
+<div class = "product-container" *ngFor="let product of products">
+  <div class = "row">
+    <img class = "product-image" [src] = "product.image" width = "200px">
+  </div>
+  <div class = "row">
+    <h4 class = "product-name">
+      <a [routerLink]="['/products', product.id]">
+        {{product.name}}
+      </a>
+    </h4>
+    <p> Price: <span class = "product-price">{{product.price | currency: '₸'}}</span> Rating:<span class = "rating">{{product.rating}}</span></p>
+    <ul>
+      <li *ngFor="let descr of product.description" class = product-desciption>{{descr.subdescr}}</li>
+    </ul>
+
+  </div>
+
+
+
+</div>
+
+
