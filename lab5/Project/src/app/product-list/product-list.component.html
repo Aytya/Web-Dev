@@ -1,0 +1,47 @@
+<h2 class = "text-black font-bold text-2xl mt-2 mb-2 left-80 relative items-center ">Products</h2>
+
+<div>
+  <div>
+<!--    <select class = "mb-4 w-[200px] text-lg" aria-label="Default select example" cSelect>-->
+<!--      <option value = "1" >Select category</option>-->
+      <button class = "ml-2 border mt-4 rounded mr-2 mb-4 w-[100px] text-lg items-center" aria-label="Default select example" *ngFor="let category of categories()" (click) = "saveCategory(category)">{{category}}</button>
+<!--    </select>-->
+  </div>
+
+    <div *ngFor="let product of setCategoryItems()" class="py-4 px-6 border rounded items-center flex mb-2 w-8/12">
+      <img [src]="product.image" [alt]="product.name" class="w-1/6 mb-2 mr-3">
+    <div class = "w-[290px]">
+      <h3 class = "text-blue-400 font-bold mr-2">
+        <a
+           [title]="product.name + ' details'"
+          [routerLink]="['/products', product.id]">
+          {{ product.name }}
+        </a>
+      </h3>
+    </div>
+        <p class = "flex flex-row mr-4 font-bold">{{product.rating.rate}}<img class = "ml-2" src = "/assets/image/star-vector-png-transparent-image-pngpix-21.png" width="28"></p>
+
+      <app-product-alerts class = "border rounded py-1 px-4 bg-blue-400 text-white mb-2 mt-2"
+                          [product]="product"
+                          (notify)="onNotify()">
+      </app-product-alerts>
+
+      <button type="button" class = "py-1 px-2 text-white"><a href="{{product.link}}">
+        <img src = "/assets/image/Logo_of_Kaspi_bank.png" width="35px"></a></button>
+
+      <button type="button" (click)="share()" (click)="shareOnTelegram(product)" class="relative items-start text-white mb-2 mt-2">
+        <img src = "/assets/image/tg.jpeg" width = "30px"/>
+      </button>
+      <div class = "relative flex right-1">
+          <span
+            class="glyphicon glyphicon glyphicon-heart"
+
+            (click) = "onClick(product)"
+            aria-hidden="true">
+          <img class="ml-4 " src="/assets/image/emoji-heart-33.png" width="25"/></span>
+          &nbsp;
+          <span>{{ product.likesCount}}</span>
+      </div>
+    </div>
+</div>
+

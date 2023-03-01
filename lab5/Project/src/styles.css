@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+app-product-list{
+  position: relative;
+  left:240px;
+}
+app-product-details{
+  position: relative;
+  left:380px;
+}
+app-cart{
+  position: relative;
+  left:380px;
+}
+app-product-list button{
+  position: relative;
+}
+
+.glyphicon {
+  color: #333;
+  cursor: pointer;
+}
+
+.highlighted {
+  color: deeppink;
+}

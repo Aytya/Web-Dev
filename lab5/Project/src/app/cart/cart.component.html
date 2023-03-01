@@ -1,0 +1,28 @@
+<h3 class="text-2xl mb-4 mt-6 fw-bold">Checkbox:</h3>
+<div class="py-4 px-6 border rounded  flex flex-col mb-2 w-6/12">
+    <div *ngFor="let item of items" class="text-lg" >
+      <span class="width-[200px]">{{ item.name }}</span>
+      <span class ="fw-bold left-[50px] ml-4 ">{{ item.price | currency : "₸" }}</span>
+      <button class = "ml-10 text-white text-lg" (click)="delete(item.id)"><img src="/assets/image/542724.png" width="30px"></button>
+    </div>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+      <div class="mt-2 mb-2 py-4 px-6">
+        <label for="name" class="text-lg">
+          Name:
+        </label>
+        <input class = "ml-6 " id="name" type="text" formControlName="name">
+      </div>
+
+      <div class="mt-2 mb-2 py-4 px-6">
+        <label for="address" class="text-lg">
+          Address:
+        </label >
+        <input class = "ml-6" id="address" type="text" formControlName="address">
+      </div>
+
+      <button class = "border rounded py-2 px-4 bg-blue-400 text-white mb-2 mt-2" type="submit">Purchase</button>
+
+    </form>
+</div>
