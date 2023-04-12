@@ -1,12 +1,6 @@
 from django.contrib import admin
-from api.models import Company
-from api.models import Vacancy
+from api.models import Product
+from api.models import Categories
 
-@admin.register(Vacancy)
-class VacancyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'salary', 'company')
-
-
-@admin.register(Company)
-class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name','city','address')
+admin.site.register(Product)
+admin.site.register(Categories)

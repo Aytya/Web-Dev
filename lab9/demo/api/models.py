@@ -1,48 +1,38 @@
 from django.db import models
 
-'''
-Table relations:
-1) OneToOne - each "User" can crate only one "Profile"
-2) OneToMany (ForeignKey) - "Category" might contain many "Products"
-3) ManyToMany - "Post" might have many "Tags", one "Tag" can be in many "Posts"
-'''
+"""
+create table products(
+    id INTEGER,
+    name VARCHAR(255),
+    price NUMERIC default 1000
+)
+"""
 
 
-# select * from api_product where category_id = <id>;
-class Company(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(max_length=255)
-    city = models.CharField(max_length=255)
-    address = models.TextField(max_length=255)
+# ORM - Object Relational Mapping
 
-    class Meta:
-        verbose_name = 'Company'
-        verbose_name_plural = 'Companies'
-
-    def __str__(self):
-        return f'{self.id}: {self.name}'
-
-    def __str__(self):
-            return f'{self.id}: {self.name}'
-
-class Vacancy(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(max_length=255)
-    salary = models.FloatField(default=1000)
-    company = models.ForeignKey(Company,
-                                     on_delete=models.CASCADE,
-                                     related_name='vacancies')
-
-    class Meta:
-        verbose_name = 'Vacancy'
-        verbose_name_plural = 'Vacancies'
-
-    def __str__(self):
-        return f'{self.id}: {self.name}'
+class Product(models.Model):
+    name = models.CharField(max_length = 255)
+    price = models.FloatField(default = 1000)
+    description = models.TextField(max_length = 1000)
+    count = models.IntegerField(default = 100)
+    is_active = models.BooleanField(default = False)
 
     def to_json(self):
-            return {
-                'id': self.id,
-                'name': self.name,
-                'salary': self.price
-            }
+        return {
+            'id': self.id,
+            'name': self.name,
+            'price': self.price,
+            'description' : self.description,
+            'count' : self.count,
+            'is_active': self.is_active,
+        }
+
+class Categories(models.Model):
+    name = models.CharField(max_length = 255)
+
+    def to_json(self):
+        return {
+            'id':self.id,
+            'name' :self.name,
+        }
