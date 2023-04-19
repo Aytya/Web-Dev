@@ -1,0 +1,2 @@
+from .views_with_def import companies, companiesById, companyIdVacancies, vacancyList, vacancyDetail, topTenVacancies
+#from .views_with_class import companies, companiesById, companyIdVacancies, vacancyList, vacancyDetail, topTenVacancies

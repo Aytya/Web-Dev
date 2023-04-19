@@ -1,0 +1,11 @@
+<p>company-list works!</p>
+
+<fieldset>
+  <label>Companies:</label>
+  <input type = "text" [(ngModel)]="newCompany">
+  <button (click)="addCompany()">Add Company</button>
+</fieldset>
+
+<div *ngFor="let company of companies">
+  <p><a [routerLink]="['/vacancies', company.id]">{{company.id}} {{company.name}} </a></p>
+</div>
